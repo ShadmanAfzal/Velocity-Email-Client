@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+
+* {
+  font-family: 'Varela', sans-serif;
+}
+
+.emailLists {
+  width: calc(100vw * 0.35);
+  height: calc(100vh - 3rem);
+}
+
+.emailFolders {
+  width: calc(100vw * 0.1);
+  height: calc(100vh - 3rem);
+}
+
+.miniPreview {
+  width: calc(100vw * 0.55);
+  height: calc(100vh - 3rem);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
