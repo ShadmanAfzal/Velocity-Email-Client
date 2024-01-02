@@ -22,7 +22,7 @@ const ListEmails = () => {
 
   if (loading) {
     return (
-      <div className="emailLists flex">
+      <div className="emailLists flex border-r">
         <AiOutlineLoading3Quarters className="mx-auto animate-spin self-center" />
       </div>
     );
@@ -30,7 +30,7 @@ const ListEmails = () => {
 
   if (error) {
     return (
-      <div className="emailLists flex">
+      <div className="emailLists flex border-r">
         <div className="mx-auto self-center">Error</div>
       </div>
     );

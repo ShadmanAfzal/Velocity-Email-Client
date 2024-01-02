@@ -6,9 +6,9 @@ import './styles.css';
 
 const App = () => {
   return (
-    <div className='h-screen overflow-y-hidden text-sm'>
+    <div className="dark:bg-customDark dark:text-customDarkText h-screen overflow-y-hidden text-sm text-black">
       <NavBar />
-      <div className='flex flex-row'>
+      <div className="flex flex-row">
         <Folders />
         <ListEmails />
         <MiniPreview />

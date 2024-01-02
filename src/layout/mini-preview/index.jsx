@@ -38,7 +38,7 @@ const MiniPreview = () => {
     );
 
   return (
-    <div className="miniPreview overflow-y-scroll border-r">
+    <div className="miniPreview border- overflow-y-scroll border-r">
       <div className="mx-4 my-3 px-2">
         <div className="flex items-center justify-between">
           <div className="text-xl">{extractSubject(email.payload.headers)}</div>
@@ -59,7 +59,7 @@ const MiniPreview = () => {
             </div>
             <StarEmail iconSize={14} index={currentIndex} />
             <FiTrash
-              className="cursor-pointer"
+              className="cursor-pointer active:scale-125"
               size={14}
               onClick={() => dispatch(removeEmailByIndex(currentIndex))}
             />
