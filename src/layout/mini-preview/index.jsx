@@ -38,7 +38,7 @@ const MiniPreview = () => {
     );
 
   return (
-    <div className="miniPreview border- overflow-y-scroll border-r">
+    <div className="no-scrollbar miniPreview overflow-y-scroll border-r-customLightBorder dark:border-r-customDarkShadow">
       <div className="mx-4 my-3 px-2">
         <div className="flex items-center justify-between">
           <div className="text-xl">{extractSubject(email.payload.headers)}</div>
@@ -66,14 +66,15 @@ const MiniPreview = () => {
           </div>
         </div>
       </div>
-      <div
-        className="px-4"
-        dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(renderEmail(email), {
-            ADD_ATTR: ['target'],
-          }),
-        }}
-      />
+      <div className="px-4">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(renderEmail(email), {
+              ADD_ATTR: ['target'],
+            }),
+          }}
+        />
+      </div>
     </div>
   );
 };

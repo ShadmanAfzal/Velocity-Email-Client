@@ -12,14 +12,20 @@ const StarEmail = ({ index, iconSize = null, props }) => {
       <FaStar
         color="F4B400"
         size={iconSize}
-        onClick={() => dispatch(toggleStar({ index, isStar: true }))}
+        onClick={(e) => {
+          e.stopPropagation();
+          dispatch(toggleStar({ index, isStar: true }));
+        }}
         className="cursor-pointer active:scale-125"
       />
     );
 
   return (
     <SlStar
-      onClick={() => dispatch(toggleStar({ index, isStar: false }))}
+      onClick={(e) => {
+        e.stopPropagation();
+        dispatch(toggleStar({ index, isStar: false }));
+      }}
       size={iconSize}
       className="cursor-pointer active:scale-125"
     />

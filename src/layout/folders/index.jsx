@@ -24,7 +24,11 @@ const Folders = () => {
     );
   });
 
-  return <div className="emailFolders border-r">{folderItems}</div>;
+  return (
+    <div className="emailFolders border-r-customLightBorder border-r dark:border-r-customDarkShadow">
+      {folderItems}
+    </div>
+  );
 };
 
 export default Folders;

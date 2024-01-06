@@ -4,10 +4,14 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: {
-      customDark: '#161616',
+      customDark: '#181818',
       customDarkText: 'white',
-      customDarkShadow: 'white',
+      customDarkShadow: '#282828',
+      customLightBorder: '#eeeeee',
+      customLightOverText: 'black',
+      customDarkHoverBackground: '#f5e879',
+      customLightHoverBackground: '#fff59d',
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-all')],
 };

@@ -22,7 +22,7 @@ const ListEmails = () => {
 
   if (loading) {
     return (
-      <div className="emailLists flex border-r">
+      <div className="emailLists border-r-customLightBorder flex border-r dark:border-r-customDarkShadow">
         <AiOutlineLoading3Quarters className="mx-auto animate-spin self-center" />
       </div>
     );
@@ -30,14 +30,14 @@ const ListEmails = () => {
 
   if (error) {
     return (
-      <div className="emailLists flex border-r">
+      <div className="emailLists border-r-customLightBorder flex border-r dark:border-r-customDarkShadow">
         <div className="mx-auto self-center">Error</div>
       </div>
     );
   }
 
   return (
-    <div className="emailLists no-scrollbar overflow-y-scroll border-r">
+    <div className="emailLists no-scrollbar border-r-customLightBorder overflow-y-scroll border-r dark:border-r-customDarkShadow">
       {emailTiles}
     </div>
   );

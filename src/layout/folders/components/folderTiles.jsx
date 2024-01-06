@@ -34,9 +34,13 @@ const FolderTiles = ({ folderName, folderId, folderType, currentFolder }) => {
 
   return (
     <div
-      className={`mx-1 my-1 flex cursor-pointer items-center gap-2 rounded-full py-1 pl-2 active:scale-95
-        ${currentFolder === folderName ? 'bg-gray-100' : ''} 
-        ${isOver ? 'bg-yellow-100' : ''}
+      className={`
+        ${currentFolder === folderName ? 'dark:bg-gray-100 bg-gray-100' : ''} 
+        ${
+          isOver &&
+          'bg-customLightHoverBackground dark:bg-customDarkHoverBackground dark:text-customLightOverText'
+        }
+        mx-1 my-1 flex cursor-pointer items-center gap-2 rounded-full py-1 pl-2 active:scale-95
       `}
       ref={dropRef}
       onClick={() => handleClick(folderName)}

@@ -32,6 +32,7 @@ export const DarkModeToggle = () => {
       sunColor="yellow"
       moonColor="white"
       size={18}
+      className="mx-2"
     />
   );
 };

@@ -28,9 +28,9 @@ export const CustomDragLayer = () => {
         style={getItemStyles(
           initialCursorOffset,
           initialFileOffset,
-          currentFileOffset
+          currentFileOffset,
         )}
-        className='shadow text-sm px-2 py-2 flex flex-row justify-center items-center w-max gap-2'
+        className="white text-black dark:shadow-gray flex w-max flex-row items-center justify-center gap-2 bg-customDarkText px-2 py-2 text-sm shadow-lg dark:bg-customDark dark:text-customDarkText dark:shadow-md"
       >
         <MdOutlineMarkEmailRead size={18} />
         <div>Move 1 conversation</div>
@@ -63,6 +63,5 @@ function getItemStyles(initialCursorOffset, initialOffset, currentOffset) {
   return {
     transform,
     WebkitTransform: transform,
-    background: 'white',
   };
 }
