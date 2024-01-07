@@ -49,7 +49,7 @@ if (process.env.NODE_ENV === 'development') {
         colors: true,
       },
       writeToDisk: true,
-    })
+    }),
   );
   app.use(webpackHotMiddleware(compiler));
 }
@@ -61,5 +61,5 @@ app.get('/', isAuthenticated, (req, res) => res.sendFile(HTML_FILE));
 app.use(express.static(DIST_DIR));
 
 app.listen(PORT, () =>
-  console.log(`Server is running at http://localhost:${PORT}`)
+  console.log(`Server is running at http://localhost:${PORT}`),
 );

@@ -18,6 +18,7 @@ import { MdOpenInFull } from 'react-icons/md';
 import { RxEnterFullScreen } from 'react-icons/rx';
 
 import {} from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const MiniPreview = () => {
   const dispatch = useDispatch();
@@ -47,10 +48,12 @@ const MiniPreview = () => {
       <div className='mx-4 my-3 px-2'>
         <div className='flex items-center justify-between gap-2'>
           <div className='text-xl'>{extractSubject(email.payload.headers)}</div>
-          <div className='bg-unReadLightBackground dark:bg-unReadDarkBackground flex cursor-pointer select-none items-center gap-2 rounded px-2 py-1 active:scale-95'>
-            <AiOutlineFullscreen />
-            <div className='text-sm text-opacity-90'>Fullscreen</div>
-          </div>
+          <Link to={'email/' + email.id}>
+            <div className='flex cursor-pointer select-none items-center gap-2 rounded bg-unReadLightBackground px-2 py-1 active:scale-105 dark:bg-unReadDarkBackground'>
+              <AiOutlineFullscreen />
+              <div className='text-sm text-opacity-90'>Fullscreen</div>
+            </div>
+          </Link>
         </div>
         <div className='my-4 flex items-center justify-between'>
           <div className='flex items-start gap-2'>
