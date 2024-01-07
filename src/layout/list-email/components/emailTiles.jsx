@@ -33,22 +33,25 @@ const EmailTiles = ({ index }) => {
       <div
         className={`mx-2 my-2 cursor-pointer rounded p-2 hover:shadow active:scale-95 dark:hover:shadow-customDarkShadow 
         ${isDragging && 'border-gray-600 border-2 border-dashed'} 
-        ${email.labelIds.includes('UNREAD') && 'bg-gray-100'}`}
+        ${
+          email.labelIds.includes('UNREAD') &&
+          'bg-unReadLightBackground dark:bg-unReadDarkBackground'
+        }`}
         ref={drag}
         onClick={() => dispatch(selectEmailToRead(index))}
       >
-        <div className="flex flex-row items-center justify-between">
-          <div className="flex flex-row items-center gap-2">
+        <div className='flex flex-row items-center justify-between'>
+          <div className='flex flex-row items-center gap-2'>
             <StarEmail index={index} />
             <div>{extractFrom(email.payload.headers)}</div>
           </div>
-          <div className="text-xs">{extractDate(email.payload.headers)}</div>
+          <div className='text-xs'>{extractDate(email.payload.headers)}</div>
         </div>
         <div>
-          <div className="truncate">
+          <div className='truncate'>
             {extractSubject(email.payload.headers)}
           </div>
-          <div className="text-black text-opacity-80np truncate dark:text-customDarkText dark:text-opacity-80">
+          <div className='text-black truncate text-opacity-80 dark:text-customDarkText dark:text-opacity-80'>
             {email.snippet}
           </div>
         </div>

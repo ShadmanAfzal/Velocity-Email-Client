@@ -40,7 +40,7 @@ const FolderTiles = ({ folderName, folderId, folderType, currentFolder }) => {
           isOver &&
           'bg-customLightHoverBackground dark:bg-customDarkHoverBackground dark:text-customLightOverText'
         }
-        mx-1 my-1 flex cursor-pointer items-center gap-2 rounded-full py-1 pl-2 active:scale-95
+        mx-1 my-1 flex cursor-pointer items-center gap-2 rounded-md py-1 pl-2 active:scale-95
       `}
       ref={dropRef}
       onClick={() => handleClick(folderName)}
