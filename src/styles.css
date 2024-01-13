@@ -1,10 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 * {
-  font-family: 'Varela', sans-serif;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .emailLists {

@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
   extractDate,
-  extractFrom,
   extractSubject,
   extractTime,
-  extractTo,
   renderEmail,
 } from '../../utils/emailUtils';
 import DOMPurify from 'dompurify';
@@ -14,11 +12,10 @@ import { FiTrash } from 'react-icons/fi';
 import { PiWarningCircleLight } from 'react-icons/pi';
 import { removeEmailByIndex } from '../../features/email/email.slice';
 import { LuReply } from 'react-icons/lu';
-import { MdOpenInFull } from 'react-icons/md';
-import { RxEnterFullScreen } from 'react-icons/rx';
 
 import {} from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import SenderInfo from './components/senderInfo';
 
 const MiniPreview = () => {
   const dispatch = useDispatch();
@@ -46,7 +43,7 @@ const MiniPreview = () => {
   return (
     <div className='no-scrollbar miniPreview overflow-y-scroll border-r-customLightBorder dark:border-r-customDarkShadow'>
       <div className='mx-4 my-3 px-2'>
-        <div className='flex items-center justify-between gap-2'>
+        <div className='flex items-start justify-between gap-2'>
           <div className='text-xl'>{extractSubject(email.payload.headers)}</div>
           <Link to={'email/' + email.id}>
             <div className='flex cursor-pointer select-none items-center gap-2 rounded bg-unReadLightBackground px-2 py-1 active:scale-105 dark:bg-unReadDarkBackground'>
@@ -57,11 +54,7 @@ const MiniPreview = () => {
         </div>
         <div className='my-4 flex items-center justify-between'>
           <div className='flex items-start gap-2'>
-            <AiOutlineUser size={18} className='cursor-pointer' />
-            <div className='flex flex-col'>
-              <div>{extractFrom(email.payload.headers)}</div>
-              <div>To {extractTo(email.payload.headers)}</div>
-            </div>
+            <SenderInfo headers={email.payload.headers} />
           </div>
           <div className='flex items-center gap-2'>
             <div>
@@ -79,11 +72,12 @@ const MiniPreview = () => {
           </div>
         </div>
       </div>
-      <div className='px-4'>
+      <div className='mb-10 px-4'>
         <div
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(renderEmail(email), {
               ADD_ATTR: ['target'],
+              ALLOWED_TAGS: ['a'],
             }),
           }}
         />

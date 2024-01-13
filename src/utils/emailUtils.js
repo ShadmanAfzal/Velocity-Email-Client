@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { decode } from 'js-base64';
 
 export const extractName = (inputString) => {
   return inputString?.replace(/<.*?>/g, '')?.trim();
@@ -64,7 +65,9 @@ export const extractTime = (headers) => {
 
 export const extractEmailBody = (email) => {
   if (email.payload.body.size) {
-    return atob(email.payload.body.data.replace(/-/g, '+').replace(/_/g, '/'));
+    return decode(
+      email.payload.body.data.replace(/-/g, '+').replace(/_/g, '/'),
+    );
   }
   const htmlPart = email.payload.parts.find(
     (part) => part.mimeType === 'text/html',
@@ -75,9 +78,9 @@ export const extractEmailBody = (email) => {
   );
 
   if (htmlPart)
-    return atob(htmlPart.body.data.replace(/-/g, '+').replace(/_/g, '/'));
+    return decode(htmlPart.body.data.replace(/-/g, '+').replace(/_/g, '/'));
 
-  return atob(textPart.body.data.replace(/-/g, '+').replace(/_/g, '/'));
+  return decode(textPart.body.data.replace(/-/g, '+').replace(/_/g, '/'));
 };
 
 export const renderEmail = (email) => {
@@ -113,4 +116,17 @@ export const isMovable = ({ id, type }) => {
   if (type === 'user') return true;
 
   return false;
+};
+
+export const getAvatarText = (headers) => {
+  const from = headers.find(
+    (header) => header.name.toLowerCase() === 'from',
+  )?.value;
+
+  const textParts = (extractName(from) ?? from).split(' ');
+
+  if (textParts.length > 1)
+    return textParts[0][0].toUpperCase() + textParts[1][0].toUpperCase();
+
+  return textParts[0][0];
 };

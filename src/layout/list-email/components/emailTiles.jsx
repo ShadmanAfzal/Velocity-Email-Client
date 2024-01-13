@@ -32,7 +32,9 @@ const EmailTiles = ({ index }) => {
     <>
       <div
         className={`mx-2 my-2 cursor-pointer rounded p-2 hover:shadow active:scale-95 dark:hover:shadow-customDarkShadow 
-        ${isDragging && 'border-gray-600 border-2 border-dashed'} 
+        ${
+          isDragging && 'border-black dark:border-white border-2 border-dashed'
+        } 
         ${
           email.labelIds.includes('UNREAD') &&
           'bg-unReadLightBackground dark:bg-unReadDarkBackground'

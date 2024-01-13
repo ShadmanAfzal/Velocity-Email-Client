@@ -35,7 +35,10 @@ const FolderTiles = ({ folderName, folderId, folderType, currentFolder }) => {
   return (
     <div
       className={`
-        ${currentFolder === folderName ? 'dark:bg-gray-100 bg-gray-100' : ''} 
+        ${
+          currentFolder === folderName &&
+          'bg-gray-100 dark:bg-white dark:bg-opacity-10'
+        } 
         ${
           isOver &&
           'bg-customLightHoverBackground dark:bg-customDarkHoverBackground dark:text-customLightOverText'
