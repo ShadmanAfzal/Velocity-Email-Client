@@ -77,7 +77,6 @@ const MiniPreview = () => {
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(renderEmail(email), {
               ADD_ATTR: ['target'],
-              ALLOWED_TAGS: ['a'],
             }),
           }}
         />
