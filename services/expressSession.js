@@ -11,13 +11,13 @@ const express_session = session({
   secret: process.env.SESSION_SECRET,
   saveUninitialized: false,
   resave: false,
-  cookie: {
-    secure: false,
-    maxAge: 86400000,
-  },
-  store: new RedisStore({
-    client: redisClient,
-  }),
+  // cookie: {
+  //   secure: false,
+  //   maxAge: 86400000,
+  // },
+  // store: new RedisStore({
+  //   client: redisClient,
+  // }),
 });
 
 module.exports = { express_session };

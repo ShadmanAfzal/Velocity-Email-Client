@@ -1,16 +1,23 @@
 import { useDrop } from 'react-dnd';
 import { capitalize } from '@alphaomega/utils';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ItemTypes } from '../../../utils/itemTypes';
+import { isMovable } from '../../../utils/emailUtils';
 import FolderIcons from '../../../components/folderIcons';
 import {
   removeEmailByIndex,
   switchFolder,
 } from '../../../features/email/email.slice';
-import { isMovable } from '../../../utils/emailUtils';
+import { CustomToolTip } from '../../../components/customToolTip';
 
-const FolderTiles = ({ folderName, folderId, folderType, currentFolder }) => {
+const FolderTiles = ({
+  folderName,
+  folderId,
+  folderType,
+  currentFolder,
+  minimize,
+}) => {
   const dispatch = useDispatch();
 
   const [{ isOver }, dropRef] = useDrop({
@@ -32,24 +39,40 @@ const FolderTiles = ({ folderName, folderId, folderType, currentFolder }) => {
     dispatch(switchFolder(folder));
   };
 
+  const selectedStyle =
+    currentFolder === folderName
+      ? 'bg-gray-100 dark:bg-white dark:bg-opacity-10'
+      : null;
+
+  const isOverStyle = isOver
+    ? 'bg-customLightHoverBackground dark:bg-customDarkHoverBackground dark:text-customLightOverText'
+    : null;
+
+  const formattedName = capitalize(
+    folderName.toLowerCase().replace('category_', ''),
+  );
+
   return (
-    <div
-      className={`
-        ${
-          currentFolder === folderName &&
-          'bg-gray-100 dark:bg-white dark:bg-opacity-10'
-        } 
-        ${
-          isOver &&
-          'bg-customLightHoverBackground dark:bg-customDarkHoverBackground dark:text-customLightOverText'
-        }
-        mx-1 my-1 flex cursor-pointer items-center gap-2 rounded-md py-1 pl-2 active:scale-95
+    <div>
+      <div
+        className={`
+        ${selectedStyle} 
+        ${isOverStyle}
+        mx-1 my-1 flex cursor-pointer items-center rounded-md py-1 active:scale-95
+        ${minimize ? 'justify-center' : 'gap-2 px-2'}
       `}
-      ref={dropRef}
-      onClick={() => handleClick(folderName)}
-    >
-      <FolderIcons folderName={folderName} />
-      {capitalize(folderName.toLowerCase().replace('category_', ''))}
+        data-tooltip-id={formattedName}
+        data-tooltip-content={formattedName}
+        data-tooltip-place='left'
+        ref={dropRef}
+        onClick={() => handleClick(folderName)}
+      >
+        <FolderIcons folderName={folderName} />
+        <div className={minimize ? 'opacity-0' : null}>
+          {!minimize ? formattedName : '.'}
+        </div>
+      </div>
+      <CustomToolTip id={formattedName} />
     </div>
   );
 };

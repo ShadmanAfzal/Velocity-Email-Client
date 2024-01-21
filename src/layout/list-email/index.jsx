@@ -17,10 +17,10 @@ const ListEmails = () => {
   if (loading) {
     return (
       <div className='flex flex-col border-r border-r-customLightBorder dark:border-r-customDarkShadow'>
-        <div className='text-black dark:text-white my-1 border-b border-b-customLightBorder px-2 text-xl font-bold text-opacity-90 dark:border-b-customDarkShadow'>
+        <div className='my-1 border-b border-b-customLightBorder px-2 text-xl font-bold text-black text-opacity-90 dark:border-b-customDarkShadow dark:text-white'>
           {capitalize(currentFolder.toLowerCase().replace('category_', ''))}
         </div>
-        <div className='emailLists flex'>
+        <div id='emailLists' className='flex'>
           <AiOutlineLoading3Quarters className='mx-auto animate-spin self-center' />
         </div>
       </div>
@@ -30,10 +30,10 @@ const ListEmails = () => {
   if (error) {
     return (
       <div className='flex flex-col border-r border-r-customLightBorder dark:border-r-customDarkShadow'>
-        <div className='text-black dark:text-white my-1 border-b border-b-customLightBorder px-2 text-xl font-bold text-opacity-90 dark:border-b-customDarkShadow'>
+        <div className='my-1 border-b border-b-customLightBorder px-2 text-xl font-bold text-black text-opacity-90 dark:border-b-customDarkShadow dark:text-white'>
           {capitalize(currentFolder.toLowerCase().replace('category_', ''))}
         </div>
-        <div className='emailLists flex'>
+        <div id='emailLists' className='flex'>
           <div className='mx-auto self-center'>Error</div>
         </div>
       </div>
@@ -42,10 +42,10 @@ const ListEmails = () => {
 
   return (
     <div className='flex flex-col border-r border-r-customLightBorder dark:border-r-customDarkShadow'>
-      <div className='text-black dark:text-white my-1 border-b border-b-customLightBorder px-2 text-xl font-bold text-opacity-90 dark:border-b-customDarkShadow'>
+      <div className='my-1 border-b border-b-customLightBorder px-2 text-xl font-bold text-black text-opacity-90 dark:border-b-customDarkShadow dark:text-white'>
         {capitalize(currentFolder.toLowerCase().replace('category_', ''))}
       </div>
-      <div className='emailLists no-scrollbar overflow-y-scroll'>
+      <div id='emailLists' className='no-scrollbar overflow-y-scroll'>
         {emailTiles}
         <div className='h-10' />
       </div>

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { RouterProvider, createHashRouter } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import HomePage from './homePage';
 import NavBar from './layout/navbar';
@@ -16,31 +16,24 @@ const App = () => {
   const dispatch = useDispatch();
   const { currentFolder } = useSelector((state) => state.email.thread);
 
-  const router = createHashRouter([
-    {
-      path: '/',
-      element: <HomePage />,
-    },
-    {
-      path: '/compose',
-      caseSensitive: true,
-      element: <EmailComposeScreen />,
-    },
-    {
-      path: '/email/:id',
-      caseSensitive: true,
-      element: <FullscreenView />,
-    },
-  ]);
-
   useEffect(() => {
     dispatch(fetchEmailsByFolder(currentFolder));
   }, [currentFolder]);
 
   return (
-    <div className='text-black h-screen overflow-y-hidden text-sm dark:bg-customDark dark:text-customDarkText'>
-      <NavBar />
-      <RouterProvider router={router} />
+    <div className='h-screen overflow-y-hidden text-sm text-black dark:bg-customDark dark:text-customDarkText'>
+      <HashRouter>
+        <NavBar />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route
+            path='/compose'
+            caseSensitive
+            element={<EmailComposeScreen />}
+          />
+          <Route path='/email/:id' caseSensitive element={<FullscreenView />} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 };

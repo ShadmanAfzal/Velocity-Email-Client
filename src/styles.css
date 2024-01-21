@@ -7,17 +7,17 @@
   font-family: 'Varela Round', sans-serif;
 }
 
-.emailLists {
+#emailLists {
   width: calc(100vw * 0.35);
   height: calc(100vh - 3rem);
 }
 
-.emailFolders {
+#emailFolders {
   width: calc(100vw * 0.1);
   height: calc(100vh - 3rem);
 }
 
-.miniPreview {
+#miniPreview {
   width: calc(100vw * 0.55);
   height: calc(100vh - 3rem);
 }

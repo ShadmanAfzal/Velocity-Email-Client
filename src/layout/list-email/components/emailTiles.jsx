@@ -33,11 +33,14 @@ const EmailTiles = ({ index }) => {
       <div
         className={`mx-2 my-2 cursor-pointer rounded p-2 hover:shadow active:scale-95 dark:hover:shadow-customDarkShadow 
         ${
-          isDragging && 'border-black dark:border-white border-2 border-dashed'
+          isDragging
+            ? 'border-2 border-dashed border-black dark:border-white'
+            : null
         } 
         ${
-          email.labelIds.includes('UNREAD') &&
-          'bg-unReadLightBackground dark:bg-unReadDarkBackground'
+          email.labelIds.includes('UNREAD')
+            ? 'bg-unReadLightBackground dark:bg-unReadDarkBackground'
+            : null
         }`}
         ref={drag}
         onClick={() => dispatch(selectEmailToRead(index))}
@@ -53,7 +56,7 @@ const EmailTiles = ({ index }) => {
           <div className='truncate'>
             {extractSubject(email.payload.headers)}
           </div>
-          <div className='text-black truncate text-opacity-80 dark:text-customDarkText dark:text-opacity-80'>
+          <div className='truncate text-black text-opacity-80 dark:text-customDarkText dark:text-opacity-80'>
             {email.snippet}
           </div>
         </div>
