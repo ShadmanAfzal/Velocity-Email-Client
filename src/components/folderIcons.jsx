@@ -1,35 +1,44 @@
-import { FaRegFolder } from 'react-icons/fa6';
-import { RiSendPlaneLine, RiSpam3Line } from 'react-icons/ri';
-import { FiTrash } from 'react-icons/fi';
-import { SlStar } from 'react-icons/sl';
-import { IoChatbubbleOutline } from 'react-icons/io5';
-import { MdAlternateEmail } from 'react-icons/md';
-import { BsInfoCircle } from 'react-icons/bs';
-import { RiGroupLine } from 'react-icons/ri';
-import { BsFileEarmarkPlus } from 'react-icons/bs';
+import {
+  AlertCircle,
+  Folder,
+  FolderCheck,
+  FolderOpen,
+  Forward,
+  Inbox,
+  Info,
+  MailOpen,
+  MessageCircle,
+  PencilRuler,
+  SendHorizontal,
+  Star,
+  Trash,
+  UsersRound,
+} from 'lucide-react';
 
 const FolderIcons = ({ folderName }) => {
   const folder = folderName.toLocaleLowerCase();
 
-  if (folder.includes('inbox')) return <MdAlternateEmail />;
+  if (folder.includes('inbox')) return <Inbox size={16} />;
 
-  if (folder.includes('sent')) return <RiSendPlaneLine />;
+  if (folder.includes('sent')) return <Forward size={16} />;
 
-  if (folder.includes('trash')) return <FiTrash />;
+  if (folder.includes('trash')) return <Trash size={16} />;
 
-  if (folder.includes('spam')) return <RiSpam3Line />;
+  if (folder.includes('spam')) return <AlertCircle size={16} />;
 
-  if (folder.includes('star')) return <SlStar />;
+  if (folder.includes('star')) return <Star size={16} />;
 
-  if (folder.includes('chat')) return <IoChatbubbleOutline />;
+  if (folder.includes('chat')) return <MessageCircle size={16} />;
 
-  if (folder.includes('update')) return <BsInfoCircle />;
+  if (folder.includes('update')) return <Info size={16} />;
 
-  if (folder.includes('social')) return <RiGroupLine />;
+  if (folder.includes('social')) return <UsersRound size={16} />;
 
-  if (folder.includes('draft')) return <BsFileEarmarkPlus />;
+  if (folder.includes('draft')) return <FolderCheck size={16} />;
 
-  return <FaRegFolder />;
+  if (folder.includes('read')) return <MailOpen size={16} />;
+
+  return <Folder size={16} />;
 };
 
 export default FolderIcons;

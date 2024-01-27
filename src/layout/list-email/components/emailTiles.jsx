@@ -47,7 +47,7 @@ const EmailTiles = ({ index }) => {
       >
         <div className='flex flex-row items-center justify-between'>
           <div className='flex flex-row items-center gap-2'>
-            <StarEmail index={index} />
+            <StarEmail index={index} iconSize={16} />
             <div>{extractFrom(email.payload.headers)}</div>
           </div>
           <div className='text-xs'>{extractDate(email.payload.headers)}</div>

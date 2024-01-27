@@ -20,8 +20,6 @@ const fetchEmailByFolders = async (access_token, folder) => {
 
     const url = GMAIL_API_ENDPOINTS.EMAIL_FOLDER(folder, 10);
 
-    console.log({ url });
-
     const response = await axios.get(url, {
       headers: {
         Authorization: 'Bearer ' + access_token,
@@ -58,7 +56,7 @@ const modifyEmailLabels = async (
   access_token,
   messageId,
   addLabels,
-  removeLabels
+  removeLabels,
 ) => {
   try {
     const url = GMAIL_API_ENDPOINTS.MODIFY_MESSAGE_LABEL(messageId);
@@ -73,7 +71,7 @@ const modifyEmailLabels = async (
         headers: {
           Authorization: 'Bearer ' + access_token,
         },
-      }
+      },
     );
   } catch (error) {
     console.log('Error occured while updating labels', error.message);

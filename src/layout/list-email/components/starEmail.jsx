@@ -1,16 +1,16 @@
-import { FaStar } from 'react-icons/fa';
-import { SlStar } from 'react-icons/sl';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleStar } from '../../../features/email/email.slice';
+import { Star } from 'lucide-react';
 
-const StarEmail = ({ index, iconSize = null, props }) => {
+const StarEmail = ({ index, iconSize = null }) => {
   const email = useSelector((state) => state.email.thread.list);
   const dispatch = useDispatch();
 
   if (email.at(index).labelIds.includes('STARRED'))
     return (
-      <FaStar
-        color='F4B400'
+      <Star
+        fill='#F4B400'
+        color='#F4B400'
         size={iconSize}
         onClick={(e) => {
           e.stopPropagation();
@@ -21,9 +21,8 @@ const StarEmail = ({ index, iconSize = null, props }) => {
     );
 
   return (
-    <SlStar
+    <Star
       onClick={(e) => {
-        e.stopPropagation();
         dispatch(toggleStar({ index, isStar: false }));
       }}
       size={iconSize}

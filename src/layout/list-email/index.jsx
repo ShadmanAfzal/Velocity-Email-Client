@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import EmailTiles from './components/emailTiles';
 import { capitalize } from '@alphaomega/utils';
+import { Loader2 } from 'lucide-react';
 
 const ListEmails = () => {
   const emails = useSelector((state) => state.email.thread.list);
@@ -21,7 +21,7 @@ const ListEmails = () => {
           {capitalize(currentFolder.toLowerCase().replace('category_', ''))}
         </div>
         <div id='emailLists' className='flex'>
-          <AiOutlineLoading3Quarters className='mx-auto animate-spin self-center' />
+          <Loader2 className='mx-auto animate-spin self-center' />
         </div>
       </div>
     );

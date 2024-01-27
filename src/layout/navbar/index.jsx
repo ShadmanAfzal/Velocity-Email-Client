@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from '../../features/auth/auth.slice.js';
-import { MdOutlineMarkEmailRead } from 'react-icons/md';
-import { FiUser } from 'react-icons/fi';
 import { DarkModeToggle } from './components/darkModeToggle.jsx';
 import { Link } from 'react-router-dom';
+import { MailWarning, UserRound } from 'lucide-react';
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -18,13 +17,13 @@ const NavBar = () => {
     <nav className='mb-2 flex h-12 items-center justify-between px-4 shadow dark:shadow-customDarkShadow'>
       <Link to='/'>
         <div className='flex cursor-pointer items-center gap-1 text-xl'>
-          <MdOutlineMarkEmailRead />
+          <MailWarning size={18} />
           <div>Velocity</div>
         </div>
       </Link>
       <div className='flex items-center gap-1'>
         <DarkModeToggle />
-        <FiUser size={18} />
+        <UserRound size={16} />
         {user.name}
       </div>
     </nav>

@@ -17,8 +17,6 @@ export const uiSlice = createSlice({
       const listElement = document.getElementById('emailFolders');
       const miniPreviewElement = document.getElementById('miniPreview');
 
-      console.log({ listElement, miniPreviewElement });
-
       if (listElement && miniPreviewElement) {
         if (state.isFolderMinimize) {
           folderListExpandedView(listElement, miniPreviewElement);
