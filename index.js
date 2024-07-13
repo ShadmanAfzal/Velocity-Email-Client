@@ -22,7 +22,7 @@ const PORT = process.env.PORT ?? 8000;
 
 const app = express();
 
-app.use(morgan('dev'));
+app.use(morgan('common'));
 
 app.use(express_session);
 
@@ -60,6 +60,4 @@ app.get('/', isAuthenticated, (req, res) => res.sendFile(HTML_FILE));
 
 app.use(express.static(DIST_DIR));
 
-app.listen(PORT, () =>
-  console.log(`Server is running at http://localhost:${PORT}`),
-);
+app.listen(PORT, () => console.log('Server is listening at PORT %s', PORT));

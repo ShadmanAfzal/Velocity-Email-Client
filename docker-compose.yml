@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  server:
+    build: .
+    ports:
+      - '8000:8000'
+    expose:
+      - 8000
+    environment:
+      PORT: 8000
+      NODE_ENV: production
+      SESSION_SECRET:
+      CLIENT_ID:
+      CLIENT_SECRET:
+      CALLBACK_URL:
+      REDIS_URL: redis://redis:6379
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - '6379:6379'
+    expose:
+      - 6379
+    volumes:
+      - cache:/data
+
+volumes:
+  cache:
